@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="1.138" tests="1" skipped="0" failures="1" errors="0">
+<testcase classname="Add Products to Shopping Cart" name="User is able to add products into shopping cart" time="0.212">
+<failure/>
+<system-out><![CDATA[
+Given user on the Login Page................................................undefined
+When user enters username "testadmin" and password "admin"..................skipped
+And user clicks on Login button.............................................skipped
+Then verify page title "My Account".........................................skipped
+Given user clicks on Tshirts................................................skipped
+When user clicks on "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie" product name.skipped
+Then Verify the page title "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie" product.skipped
+And validate the product name text..........................................skipped
+And validate the product price..............................................skipped
+And user enters the quantity "2"............................................skipped
+When user click on Add to Cart button.......................................skipped
+Then Verify the page title "Shopping Cart"..................................skipped
+]]></system-out>
+</testcase>
+</testsuite>

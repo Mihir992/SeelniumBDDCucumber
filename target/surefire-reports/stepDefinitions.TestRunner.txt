@@ -1,0 +1,71 @@
+-------------------------------------------------------------------------------
+Test set: stepDefinitions.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.545 s <<< FAILURE! - in stepDefinitions.TestRunner
+User is able to add products into shopping cart(Add Products to Shopping Cart)  Time elapsed: 0.801 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'user on the Login Page' and 11 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("user on the Login Page")
+public void user_on_the_login_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("user enters username {string} and password {string}")
+public void user_enters_username_and_password(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("user clicks on Login button")
+public void user_clicks_on_login_button() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("verify page title {string}")
+public void verify_page_title(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("user clicks on Tshirts")
+public void user_clicks_on_tshirts() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("user clicks on {string} product name")
+public void user_clicks_on_product_name(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("Verify the page title {string} product")
+public void verify_the_page_title_product(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("validate the product name text")
+public void validate_the_product_name_text() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("validate the product price")
+public void validate_the_product_price() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("user enters the quantity {string}")
+public void user_enters_the_quantity(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("user click on Add to Cart button")
+public void user_click_on_add_to_cart_button() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("Verify the page title {string}")
+public void verify_the_page_title(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
