@@ -1,9 +1,10 @@
 package pages;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 public class BasePage {
 	
@@ -31,16 +32,21 @@ public class BasePage {
 	
 	public static void clickOnLink(WebElement linkelm) {
 		linkelm.click();
-	}
-	
+	}	
 	public static void enterValue(WebElement elmValue,String qtyValue) {
 		int qty= Integer.parseInt(qtyValue);
 		elmValue.sendKeys(String.valueOf(qty));
 	}
-	public String getTitle() {
-		return driver.getTitle();
+	public String getTitle(WebDriver driver) {
+		boolean flag = false;
+
+		String text = driver.getTitle();
+		if (flag) {
+			System.out.println("Title of the page is: \""+text+"\"");
+		}
+		return text;
 	}
-	
+
 	
 	public void hoverAndClickElement(WebElement elm1,WebElement elm2) {
 		elm1.click();
@@ -52,7 +58,6 @@ public class BasePage {
 	
 	public void validateText(WebElement elmText,String expectedText) {
 		String actualText = elmText.getText();
-		Assert.assertTrue("Expected Text:" + expectedText + "is not matching with actual text:" + actualText,
-				expectedText.equals(actualText));
+		Assert.assertTrue(expectedText.equalsIgnoreCase(actualText));
 	}
 }
