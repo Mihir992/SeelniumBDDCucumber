@@ -2,77 +2,68 @@ package stepDefinitions;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.BasePage;
+import pages.AddProductToShoppingCart;
 
 public class ShoppingCartStepDefs extends BasePage{
 	
-	WebDriver driver;
+	//WebDriver driver;
 	public ShoppingCartStepDefs(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(xpath="//*[@id='categorymenu']/nav/ul/li[2]/a")
-	private WebElement linkmenuApparelAccessories;
-	
-	@FindBy(xpath="//*[@id='categorymenu']/nav/ul/li[2]/div/ul[1]/li[2]/a")
-	private WebElement linkmenuTShirt;
-	
-	@FindBy(xpath="//a[text()='Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie']")
-	private WebElement linkProductName;
-	
-	@FindBy(xpath="//span[text()='Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie']")
-	private WebElement txtProductName;
-	
-	@FindBy(xpath="//div[@id='product_details']/div/div[2]//following-sibling::div/div[@class='productfilneprice']")
-	private WebElement txtProductPrice;
-	
-	@FindBy(xpath="//form[@id='product']/fieldset/div[4]/label/span[@class='total-price']")
-	private WebElement txtTotalPrice;
-	
-	@FindBy(id="product_quantity")
-	private WebElement txtQty;
+	WebDriver driver = new ChromeDriver();
+	public AddProductToShoppingCart sp = new AddProductToShoppingCart(driver);
 	
 	
-	@FindBy(xpath="//a[@class='cart']")
-	private WebElement btnAddToCart;
-	
-	
-	public void clickOnTshirtsMenu(){
-		hoverAndClickElement(linkmenuApparelAccessories, linkmenuTShirt);
+	@Given("user clicks on Tshirts")
+	public void user_clicks_on_Tshirts(){
+		sp.clickOnTshirtsMenu();
 	}
 	
-	public void clickOnProductNameLink() {
-		clickOnLink(linkProductName);
+	@When("user clicks on {string} product name")
+	public void user_clicks_on_product_name() {
+		sp.clickOnProductNameLink();
 	}
 	
-	public String getPageTitle() {
-		return driver.getTitle();
+	@Then("Verify the page title {string} product")
+	public void Verify_the_page_title_product() {
+		sp.getPageTitle();
 	}
 	
-	public void validateProductNameText(String expProductNameText) {
-		validateText(txtProductName, expProductNameText);
-	}
-	
-	//public void validateProductNamePrice(String expProductNamePrice) {
-		//validateText(txtProductName, expProductNameText);
-	//}
-	
-	public void enterQuantity(String productQuantity) {
-		enterValue(txtQty,productQuantity);
+	@And("validate the product name text")
+	public void validate_ProductName() {
+		
 	}
 	  
-	public void clickonCartButton() {
-		click(btnAddToCart);
-	}
-	
-	public String getShoppingCartPageTitle() {
-		return driver.getTitle();
+	@And("validate the product price")
+	public void validate_ProductPrice() {
+		
 	}
 	  
+	@And("user enters the quantity {string}")
+	public void user_enters_the_quantity(String qty) {
+		sp.enterQuantity(qty);
+	}
+	
+	@When("user click on Add to Cart button")
+	public void user_click_on_AddtoCart_button() {
+		sp.clickonCartButton();
+	}
+	
+	@Then("Verify the page title {string}")
+	public void Verify_the_page_title(String expShoppingCartTitle) {
+		String actShoppingCartPageTitle = sp.getShoppingCartPageTitle();
+		Assert.assertEquals(actShoppingCartPageTitle,expShoppingCartTitle,"Page Title is not getting matched");
+	}
+	
 }
