@@ -3,47 +3,58 @@ package stepDefinitions;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.BasePage;
+import pages.Login;
 
 public class LoginStepDefs extends BasePage {
 
-	WebDriver driver;
+	//WebDriver driver;
 	public LoginStepDefs(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 	
-	@FindBy(id="loginFrm_loginname")
-	private WebElement username;
+	WebDriver driver = new ChromeDriver();
+	public Login login = new Login(driver);
 	
-
-	@FindBy(id="loginFrm_password")
-	private WebElement password;
 	
-
-	@FindBy(xpath="//button[@title='Login']")
-	private WebElement loginButton;
-	
-	public void openLoginPage(String expURL) {
-		openURL(expURL);
+	@Given("user on the Login Page")
+	public void user_on_the_Login_Page(){
+		driver.manage().window().maximize();
+		login.openLoginPage("https://automationteststore.com/index.php?rt=account/login");
+		
 	}
 
-	public void enterUsername(String uname) {
-		enterText(username,uname);
+	@Then("Verify page title {string}")
+	public void Verify_page_title() {
+		login.getLoginPageTitle();
+		//Assert.assertEquals(actAccountLoginPageTitle,expAccountLoginTitle,"Page Title is not getting matched");
 	}
 	
-	
-	public void enterPassword(String passwd) {
-		enterText(password,passwd);
+	@When("user enters username {string} and password {string}")
+	public void  user_enters_username_and_password(String uid,String pwd){
+		login.enterUsername(uid);
+		login.enterPassword(pwd);	
 	}
 	
-	public void user_click_Login_button() {
-		click(loginButton);
+	@And("user clicks on Login button")
+	public void user_clicks_on_Login_button() {
+		login.user_click_Login_button();
 	}
 	
-	public String getPageTitle() {
-		return driver.getTitle();
-	}
+	@Then("verify page title {string}")
+	public void verify_page_title() {
+		login.getLoginPageTitle();
+		//Assert.assertEquals(actMyAccountPageTitle,expMyAccountTitle,"Page Title is not getting matched");
+		throw new io.cucumber.java.PendingException();
+	}	
+
+
 }
