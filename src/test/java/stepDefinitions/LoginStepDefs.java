@@ -13,13 +13,9 @@ import io.cucumber.java.en.When;
 import pages.BasePage;
 import pages.Login;
 
-public class LoginStepDefs extends BasePage {
+public class LoginStepDefs {
 
-	//WebDriver driver;
-	public LoginStepDefs(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
+
 	
 	WebDriver driver = new ChromeDriver();
 	public Login login = new Login(driver);
