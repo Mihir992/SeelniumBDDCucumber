@@ -33,9 +33,9 @@ public class LoginStepDefs extends BasePage {
 	}
 
 	@Then("Verify page title {string}")
-	public void Verify_page_title() {
-		login.getLoginPageTitle();
-		//Assert.assertEquals(actAccountLoginPageTitle,expAccountLoginTitle,"Page Title is not getting matched");
+	public void Verify_page_title(String expTitle) {
+		String actTitle = login.getLoginPageTitle();
+		Assert.assertTrue(actTitle.equalsIgnoreCase(expTitle));
 	}
 	
 	@When("user enters username {string} and password {string}")
@@ -50,11 +50,10 @@ public class LoginStepDefs extends BasePage {
 	}
 	
 	@Then("verify page title {string}")
-	public void verify_page_title() {
-		login.getLoginPageTitle();
-		//Assert.assertEquals(actMyAccountPageTitle,expMyAccountTitle,"Page Title is not getting matched");
-		throw new io.cucumber.java.PendingException();
-	}	
+	public void verify_page_title(String expTitle) {
+		String actTitle = login.getLoginPageTitle();
+		Assert.assertTrue(actTitle.equalsIgnoreCase(expTitle));
+	}
 
 
 }
