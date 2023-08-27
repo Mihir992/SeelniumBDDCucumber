@@ -55,7 +55,7 @@ public class Login extends BasePage{
 		click(loginButton);
 	}
 	
-	public void getLoginPageTitle() {
-		getTitle(driver);
+	public String getLoginPageTitle() {
+		return driver.getTitle();
 	}	
 }
