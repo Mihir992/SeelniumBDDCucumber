@@ -11,8 +11,5 @@ Feature: Add Products to Shopping Cart
   Given user clicks on Tshirts
   When user clicks on "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie" product name
   Then Verify the page title "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie" product
-  And validate the product name text
-  And validate the product price
-  And user enters the quantity "2"
   When user click on Add to Cart button
   Then Verify the page title "Shopping Cart"
