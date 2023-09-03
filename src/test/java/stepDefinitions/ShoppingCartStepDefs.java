@@ -39,17 +39,6 @@ public class ShoppingCartStepDefs extends BasePage{
 	public void Verify_the_page_title_product() {
 		sp.getPageTitle();
 	}
-	
-	@And("validate the product name text")
-	public void validate_ProductName() {
-		
-	}
-	  
-	@And("validate the product price")
-	public void validate_ProductPrice() {
-		
-	}
-	  
 	@And("user enters the quantity {string}")
 	public void user_enters_the_quantity(String qty) {
 		sp.enterQuantity(qty);
