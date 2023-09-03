@@ -63,15 +63,6 @@ public class AddProductToShoppingCart extends BasePage {
 	public String getPageTitle() {
 		return driver.getTitle();
 	}
-	
-	public void validateProductNameText(String expProductNameText) {
-		validateText(txtProductName, expProductNameText);
-	}
-	
-	public void enterQuantity(String productQuantity) {
-		enterValue(txtQty,productQuantity);
-	}
-	  
 	public void clickonCartButton() {
 		click(btnAddToCart);
 	}
