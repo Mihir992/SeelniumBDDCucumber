@@ -14,15 +14,9 @@ import pages.BasePage;
 import pages.AddProductToShoppingCart;
 
 public class ShoppingCartStepDefs{
-	
-	//WebDriver driver;
-	public ShoppingCartStepDefs(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
 
 	WebDriver driver = new ChromeDriver();
-	public AddProductToShoppingCart sp = new AddProductToShoppingCart(driver);
+	AddProductToShoppingCart sp = new AddProductToShoppingCart(driver);
 	
 	
 	@Given("user clicks on Tshirts")
