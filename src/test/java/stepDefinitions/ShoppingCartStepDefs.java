@@ -33,10 +33,6 @@ public class ShoppingCartStepDefs{
 	public void Verify_the_page_title_product() {
 		sp.getPageTitle();
 	}
-	@And("user enters the quantity {string}")
-	public void user_enters_the_quantity(String qty) {
-		sp.enterQuantity(qty);
-	}
 	
 	@When("user click on Add to Cart button")
 	public void user_click_on_AddtoCart_button() {
