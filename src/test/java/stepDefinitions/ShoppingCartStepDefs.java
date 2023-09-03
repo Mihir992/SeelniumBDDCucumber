@@ -13,7 +13,7 @@ import io.cucumber.java.en.When;
 import pages.BasePage;
 import pages.AddProductToShoppingCart;
 
-public class ShoppingCartStepDefs extends BasePage{
+public class ShoppingCartStepDefs{
 	
 	//WebDriver driver;
 	public ShoppingCartStepDefs(WebDriver driver) {
