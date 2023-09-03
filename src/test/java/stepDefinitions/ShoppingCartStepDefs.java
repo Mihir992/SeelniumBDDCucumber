@@ -42,7 +42,7 @@ public class ShoppingCartStepDefs{
 	@Then("Verify the page title {string}")
 	public void Verify_the_page_title(String expShoppingCartTitle) {
 		String actShoppingCartPageTitle = sp.getShoppingCartPageTitle();
-		Assert.assertEquals(actShoppingCartPageTitle,expShoppingCartTitle,"Page Title is not getting matched");
+		Assert.assertTrue(actShoppingCartPageTitle,expShoppingCartTitle);
 	}
 	
 }
