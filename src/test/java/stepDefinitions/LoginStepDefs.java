@@ -31,7 +31,7 @@ public class LoginStepDefs extends ExtentReportListener{
 			test = extent.createTest(Feature.class,"To test Login functionality");
 			test = test.createNode(Scenario.class,"Scenario name");
 			logInfo = test.createNode(new GherkinKeyword("Given"),"user_on_the_Login_Page");
-			System.setProperty("webdriver.chromer.driver","C:\\Users\\admin\\eclipseworkspace\\CucumberFramework\\Driver\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\admin\\eclipseworkspace\\CucumberFramework\\Driver\\chromedriver_win32\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			login.openLoginPage("https://automationteststore.com/index.php?rt=account/login");
@@ -42,38 +42,24 @@ public class LoginStepDefs extends ExtentReportListener{
 		}
 	}
 
-	@Then("Verify page title {string}")
-	public void Verify_page_title(String expTitle) {
+	@When("^valid \\\"(.*)\\\" and \\\"(.*)\\\" is entered$")
+    public void when_valid_username_and_password_is_entered(String username,String password) throws Throwable{
 		ExtentTest logInfo = null;
 		try {
-			logInfo = test.createNode(new GherkinKeyword("Then"),"Verify_page_title");
-			String actTitle = login.getLoginPageTitle();
-			Assert.assertTrue(actTitle.equalsIgnoreCase(expTitle));
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
-			driver.quit();
-		}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
-		}
-	}
-	
-	@When("user enters validusername {string} and invalidpassword {string}")
-	public void  user_enters_validusername_and_invalidpassword(String validuid,String invalidpwd){
-		ExtentTest logInfo = null;
-		try {
-			logInfo = test.createNode(new GherkinKeyword("When"),"user_enters_validusername_and_invalidpassword");
-			login.enterUsername(validuid);
-			login.enterPassword(invalidpwd);
+			logInfo = test.createNode(new GherkinKeyword("When"),"when_valid_username_and_password_is_entered");
+			login.enterUsername(username);
+			login.enterPassword(password);
 			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
 		}catch(AssertionError | Exception e) {
 			testStepHandle("FAIL",driver,logInfo,e);
 		}
 	}
 	
-	@And("user clicks on Login button")
-	public void user_clicks_on_Login_button() {
+	@Then("^User should be logged in successfully$")
+	public void then_user_should_logged_in_successfully()  throws Throwable {
 		ExtentTest logInfo = null;
 		try {
-			logInfo = test.createNode(new GherkinKeyword("And"),"user_clicks_on_Login_button");
+			logInfo = test.createNode(new GherkinKeyword("Then"),"then_user_should_logged_in_successfully");
 			login.user_click_Login_button();
 			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
 			}catch(AssertionError | Exception e) {
@@ -81,44 +67,4 @@ public class LoginStepDefs extends ExtentReportListener{
 		}	
 	}
 	
-	@Then("verify validation message as {string}")
-	public void verify_validation_message() {
-		ExtentTest logInfo = null;
-		try {
-			logInfo = test.createNode(new GherkinKeyword("Then"),"verify_validation_message");
-			login.getvalidationMessageText();
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
-			driver.quit();
-			}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
-		}
-	}
-	
-	
-	@When("user enters username {string} and password {string}")
-	public void  user_enters_username_and_password(String uid,String pwd){
-		ExtentTest logInfo = null;
-		try {
-			logInfo = test.createNode(new GherkinKeyword("When"),"user_enters_username_and_password");
-			login.enterUsername(uid);
-			login.enterPassword(pwd);
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
-		}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
-		}
-	}
-	
-	
-	@Then("verify page title {string}")
-	public void verify_page_title(String expTitle) {
-		ExtentTest logInfo = null;
-		try {
-			logInfo = test.createNode(new GherkinKeyword("Then"),"verify_page_title");
-			String actTitle = login.getLoginPageTitle();
-			Assert.assertTrue(actTitle.equalsIgnoreCase(expTitle));
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
-			}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
-		}
-	}
 }
