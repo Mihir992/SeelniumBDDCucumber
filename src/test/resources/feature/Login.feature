@@ -1,8 +1,6 @@
-Feature:To test Login functionality
 
 @TestngTest
 Feature:To test Login functionality
-
 
 Scenario Outline: Test user Login with different credentials
 
