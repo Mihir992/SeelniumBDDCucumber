@@ -24,7 +24,7 @@ public class LoginStepDefs extends ExtentReportListener{
 	Login login = new Login(driver);
 	
 	
-	@Given("user on the Login Page")
+	@Given("User on the Login Page")
 	public void user_on_the_Login_Page() throws InterruptedException{
 		ExtentTest logInfo = null;
 		try {
