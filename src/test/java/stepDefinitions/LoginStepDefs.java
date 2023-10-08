@@ -3,13 +3,7 @@ package com.cucumber.stepDefinitions;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.GherkinKeyword;
-import com.aventstack.extentreports.gherkin.model.Feature;
-import com.aventstack.extentreports.gherkin.model.Scenario;
-import com.cucumber.listeners.ExtentReportListener;
 import com.cucumber.pageObject.Login;
 
 import cucumber.api.java.en.And;
@@ -17,54 +11,97 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class LoginStepDefs extends ExtentReportListener{
+public class LoginStepDefs{
 
-	//WebDriver driver = new ChromeDriver();
-	public static WebDriver driver;
-	Login login = new Login(driver);
-	
+	public WebDriver driver;
+	Login login;
 	
 	@Given("user on the Login Page")
 	public void user_on_the_Login_Page() throws InterruptedException{
-		ExtentTest logInfo = null;
+		//ExtentTest logInfo = null;
 		try {
-			test = extent.createTest(Feature.class,"To test Login functionality");
-			test = test.createNode(Scenario.class,"Scenario name");
-			logInfo = test.createNode(new GherkinKeyword("Given"),"user_on_the_Login_Page");
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\admin\\eclipseworkspace\\CucumberFramework\\Driver\\chromedriver_win32\\chromedriver.exe");
+			//test = extent.createTest(Feature.class,"To test Login functionality");
+			//test = test.createNode(Scenario.class,"Test user Login with different credentials");
+			//logInfo = test.createNode(new GherkinKeyword("Given"),"user_on_the_Login_Page");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
-			login.openLoginPage("https://automationteststore.com/index.php?rt=account/login");
-			logInfo.pass("Open Chrome Browser and entered login page url");
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
+			login = new Login(driver);
+			//login.openLoginPage("https://automationteststore.com/index.php?rt=account/login");
+			//driver.get("https://automationteststore.com/index.php?rt=account/login");
+			//logInfo.pass("Open Chrome Browser and entered login page url");
+			//logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
 		}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
+			//testStepHandle("FAIL",driver,logInfo,e);
 		}
 	}
 
-	@When("^valid \\\"(.*)\\\" and \\\"(.*)\\\" is entered$")
-    public void when_valid_username_and_password_is_entered(String username,String password) throws Throwable{
-		ExtentTest logInfo = null;
+	@When("^User enter the Usename \"(.*)\" and Password \"(.*)\"$")
+	public void valid_and_is_entered(String username,String password) throws Throwable{
+		//ExtentTest logInfo = null;
 		try {
-			logInfo = test.createNode(new GherkinKeyword("When"),"when_valid_username_and_password_is_entered");
+			//logInfo = test.createNode(new GherkinKeyword("When"),"when_valid_username_and_password_is_entered");
+			login = new Login(driver);
+			login.clickOnUsernameTextField();;
 			login.enterUsername(username);
+			login.clickOnPasswordTextField();
 			login.enterPassword(password);
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
+			//logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
 		}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
+			//testStepHandle("FAIL",driver,logInfo,e);
 		}
 	}
 	
-	@Then("^User should be logged in successfully$")
-	public void then_user_should_logged_in_successfully()  throws Throwable {
-		ExtentTest logInfo = null;
+	@Then("User should be logged in successfully")
+	public void user_should_be_logged_in_successfully()  throws Throwable {
+		//ExtentTest logInfo = null;
 		try {
-			logInfo = test.createNode(new GherkinKeyword("Then"),"then_user_should_logged_in_successfully");
+			//logInfo = test.createNode(new GherkinKeyword("Then"),"user_should_be_logged_in_successfully");
+			login = new Login(driver);
 			login.user_click_Login_button();
-			logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
+			login.getLoginPageTitle();
+			//logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
 			}catch(AssertionError | Exception e) {
-			testStepHandle("FAIL",driver,logInfo,e);
+			//testStepHandle("FAIL",driver,logInfo,e);
 		}	
 	}
 	
+	@When("user click on Logoff icon")
+	public void user_click_on_Logoff_icon() throws Throwable{
+		//ExtentTest logInfo = null;
+		try {
+			//logInfo = test.createNode(new GherkinKeyword("When"),"when_valid_username_and_password_is_entered");
+			login = new Login(driver);
+			login.user_click_Logoff_button();
+			//logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
+		}catch(AssertionError | Exception e) {
+			//testStepHandle("FAIL",driver,logInfo,e);
+		}
+	}
+	
+	@And("click on Continue button")
+	public void click_on_Continue_button() throws Throwable{
+		//ExtentTest logInfo = null;
+		try {
+			//logInfo = test.createNode(new GherkinKeyword("When"),"when_valid_username_and_password_is_entered");
+			login = new Login(driver);
+			login.user_click_Continue_button();
+			//logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
+		}catch(AssertionError | Exception e) {
+			//testStepHandle("FAIL",driver,logInfo,e);
+		}
+	}
+	
+	
+	@Then("validate the Logout page title")
+	public void validate_the_Logout_page_title()  throws Throwable {
+		//ExtentTest logInfo = null;
+		try {
+			//logInfo = test.createNode(new GherkinKeyword("Then"),"user_should_be_logged_in_successfully");
+			login = new Login(driver);
+			login.getLogoutPageTitle();
+			//logInfo.addScreenCaptureFromPath(captureScreenshot(driver));
+			}catch(AssertionError | Exception e) {
+			//testStepHandle("FAIL",driver,logInfo,e);
+		}	
+	}
 }
